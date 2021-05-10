@@ -1,0 +1,14 @@
+.bar{
+    background-color: #68CCDB;
+    margin: 4px;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+
+.activeBar {
+    background-color: #F0AE56;
+}
+
+.greenBar {
+    background-color: #E66562;
+}

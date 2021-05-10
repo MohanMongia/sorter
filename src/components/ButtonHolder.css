@@ -1,0 +1,46 @@
+
+.buttonHolder {
+    width: 75%;
+    display: flex;
+    border-radius: 8px;
+    justify-content: space-evenly;
+    padding-top: 32px;
+    margin: 0px auto 0 auto;
+    width: 15%;
+}
+
+.styledButton {
+    padding: 16px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    border: 2px solid #68CCDB;
+    background-color: #061137;
+    color: #68CCDB;
+    border-radius: 8px;
+    margin: 0px 8px;
+    transition: 0.3s;
+}
+
+.styledButton:last-child {
+    margin-right: 0px;
+}
+.styledButton:first-child {
+    margin-left: 0px;
+}
+
+.styledButton:hover {
+    cursor: pointer;
+    background-color: #F0AE56;
+    border: 2px solid #F0AE56;
+    color: white;
+    font-weight: 600;
+}
+
+.hideButtonHolderDiv {
+    display: none;
+}
+
+.showButtonHolderDiv {
+    display: initial;
+}

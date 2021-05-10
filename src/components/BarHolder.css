@@ -1,0 +1,16 @@
+.barHolderDiv {
+    width: 75%;
+    display: flex;
+    /* border: 2px solid #68CCDB; */
+    border-radius: 8px;
+    justify-content: center;
+    align-items: baseline;
+    padding: 24px;
+    margin-top: 64px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.bar:last-child {
+    margin-right: 1px;
+}
