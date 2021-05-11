@@ -1,6 +1,7 @@
 .bar{
     background-color: #68CCDB;
     margin: 4px;
+    color: white;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
 }
@@ -11,4 +12,8 @@
 
 .greenBar {
     background-color: #E66562;
+}
+
+.referenceBar{
+    background-color: white !important;
 }

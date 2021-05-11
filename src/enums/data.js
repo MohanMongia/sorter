@@ -1,7 +1,17 @@
 export const timing = {
-    "DURATION" :  50 //in milli sec (10 sec)
+    "DURATION" :  50
 }
 
-export const numbers = {
-    "NUMBERS" : [45,123,4,156,121,75,143,200,12,73,56,23,46,64]
+export const numbersArraySize = {
+    "MAXSIZE" : 100,
+    "MINSIZE" : 6
+}
+
+export const numbersValue = {
+    "MAXVAL": 300,
+    "MINVAL" : 6
+}
+
+export const barHeight = {
+    "MAXVAL" : 600
 }

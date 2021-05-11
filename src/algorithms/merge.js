@@ -1,8 +1,8 @@
-import {timing} from "../enums/data";
+import calculateDuration from "../utils/iterationTimeCalculator";
 import hider,{shower} from "../utils/buttonHolderDivDisplay";
 
 
-function swapper(first,second)
+function swapper(first,second,duration)
 {
     return  new Promise((resolve,reject) => {
         setTimeout(() => {
@@ -26,22 +26,22 @@ function swapper(first,second)
                     })
                 }
             })
-        },timing.DURATION);
+        },duration);
     })
 }
 
 
-async function sortNumbers(start,end)
+async function sortNumbers(start,end,duration)
 {
     if(start>=end)
         return "done";
     let mid = start + Number.parseInt((end-start)/2);
-    await sortNumbers.call(this,start,mid);
-    await sortNumbers.call(this,mid+1,end);
+    await sortNumbers.call(this,start,mid,duration);
+    await sortNumbers.call(this,mid+1,end,duration);
     let i=start,j=mid+1;
     while(i<=mid && j<=end)
     {
-        const result = await swapper.call(this,i,j);
+        const result = await swapper.call(this,i,j,duration);
         if(result)
             i++;
         else
@@ -59,11 +59,12 @@ async function sortNumbers(start,end)
 
 export default function sortHelper(buttonHolderDivRef)
 {
+    let duration = calculateDuration(this.state.numbers.length);
     hider(buttonHolderDivRef);
     this.setState({
         sortingComplete:false
     },async () => {
-        await sortNumbers.call(this,0,this.state.numbers.length-1);
+        await sortNumbers.call(this,0,this.state.numbers.length-1,duration);
         this.setState({
             activeBars: [],
             sortingComplete:true

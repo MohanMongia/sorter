@@ -14,7 +14,7 @@ const BarHolder = (props) => {
         return props.barsData.map((num,index) => {
             const current = (!props.sortingComplete &&  (index===props.activeBars[0] || index===props.activeBars[1] )) ? true : false;
             return (
-                <Bar key={index} maxHeight={maxHeight} totalBars={totalBars} sortingComplete={props.sortingComplete} height={num} current={current}/>
+                <Bar key={index} referenceBar={props.referenceBar===index} maxHeight={maxHeight} totalBars={totalBars} sortingComplete={props.sortingComplete} height={num} current={current}/>
             );
         })
     }

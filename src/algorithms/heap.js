@@ -1,8 +1,9 @@
-import {timing} from "../enums/data";
+// import {timing} from "../enums/data";
+import calculateDuration from "../utils/iterationTimeCalculator";
 import hider,{shower} from "../utils/buttonHolderDivDisplay";
 
 
-function swapper(first,second)
+function swapper(first,second,duration)
 {
     return  new Promise((resolve,reject) => {
         setTimeout(() => {
@@ -24,15 +25,15 @@ function swapper(first,second)
                     })
                 }
             })
-        },timing.DURATION);
+        },duration);
     })
 }
 
-async function sortHeap()
+async function sortHeap(duration)
 {
     for(let i=this.state.numbers.length-1;i>0;i--)
     {
-        await swapper.call(this,i,0);
+        await swapper.call(this,i,0,duration);
         console.log(this.state.numbers[0]);
         let index = 0;
         let nextIndex = 0;
@@ -53,7 +54,7 @@ async function sortHeap()
             }
             if(nextIndex===index)
                 break;
-            await swapper.call(this,index,nextIndex);
+            await swapper.call(this,index,nextIndex,duration);
             index = nextIndex;
             firstChild = getFirstChild.call(this,index);
             secondChild = getSecondChild.call(this,index);
@@ -61,7 +62,7 @@ async function sortHeap()
     }
 }
 
-async function makeHeap()
+async function makeHeap(duration)
 {
     const temp = [...this.state.numbers];
     for(let i=0;i<temp.length;i++)
@@ -70,7 +71,7 @@ async function makeHeap()
         let parent = getParent(index);
         while(parent !== index)
         {
-            const result = await swapper.call(this,parent,index);
+            const result = await swapper.call(this,parent,index,duration);
             if(result)
                 break;
             index=parent;
@@ -103,15 +104,15 @@ function getParent(i){
 }
 
 export default function heap(buttonHolderDivRef) {
-
+    let duration = calculateDuration(this.state.numbers.length);
     hider(buttonHolderDivRef);
     this.setState({
         sortingComplete:false,
         activeBars: []
     },async () => {
-        makeHeap.call(this)
+        makeHeap.call(this,duration)
             .then(result => {
-                return sortHeap.call(this);
+                return sortHeap.call(this,duration);
             })
             .then(result => {
                 this.setState({
